@@ -128,6 +128,7 @@ class Choice(models.Model):
     questions = models.ManyToManyField(Question)
     choice_text = models.CharField(max_length=1000)
     is_correct = models.BooleanField()
+    #question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='question_id',)
 # <HINT> The submission model
 # One enrollment could have multiple submission
@@ -136,4 +137,5 @@ class Choice(models.Model):
 
 class Submission(models.Model):
     enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
-    chocies = models.ManyToManyField(Choice)
+    choices = models.ManyToManyField(Choice)
+    
